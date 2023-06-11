@@ -4,15 +4,13 @@ const path = require('path');
 var app = express();
 
 const port = process.env.PORT || 8080;
-
-const views_dir = path.join(__dirname, '/frontend/views/');
+const routes_path = path.join(__dirname, "/backend/routes/");
 
 // serve static files
 app.use(express.static(path.join(__dirname, "/frontend")));
 
 // routes
-app.get('/', (req, res) => {
-    res.sendFile(path.join(views_dir, "index.html"));
-});
+const mainRoute = require(routes_path + "main");
+app.use("/", mainRoute);
 
 app.listen(port);
