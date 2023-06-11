@@ -1,0 +1,26 @@
+{
+  "name": "express",
+  "version": "4.18.2",
+  "description": "express",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wahalez/dddm.git"
+  },
+  "keywords": [
+    "dddm"
+  ],
+  "author": "Nagornov, Spector, Adin, Peretz, Another guy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wahalez/dddm/issues"
+  },
+  "homepage": "https://github.com/Wahalez/dddm#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
