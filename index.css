@@ -1,12 +1,29 @@
 .btn-spacing {
-    margin-right: 10px;
+    margin-left: 10px;
 }
 #cards {
     margin-top: 100px;
     margin-left: 10px;
+    margin-bottom: 10px;
 }
-
+.card.mb-3 {
+    margin-top: 20px;
+  }
 .card {
     width: 25rem;
     height: 100%;
+}
+body {
+    background-color: rgb(230, 230, 221);
+    
+}
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+#login{
+    margin-top: 40px;
 }
