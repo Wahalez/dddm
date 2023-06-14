@@ -4,15 +4,15 @@ function refreshPage() {
 $('#loginBtn').click(function() {
   window.location.href = 'login.html';
 });
-  document.getElementById('homebtn').addEventListener('click', function() {
-    window.location.href = 'frontend\view\login.html';
-  });
-  document.getElementById('register').addEventListener('click', function() {
+ document.getElementById('homebtn').addEventListener('click', function() {
+    window.location.href = 'login.html';
+ });
+ document.getElementById('register').addEventListener('click', function() {
     window.location.href = 'Register.html';
-  });
-  document.getElementById('console').addEventListener('click', function() {
+});
+ document.getElementById('console').addEventListener('click', function() {
     window.location.href = 'console.html';
-  });
+});
   document.getElementById('allGames').addEventListener('click', function() {
     window.location.href = 'games.html';
   });
@@ -21,12 +21,20 @@ $('#loginBtn').click(function() {
 
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
+    if (password === confirmPassword) {
+      // Passwords match, proceed with registration logic
+      var firstName = document.getElementById('firstName').value;
+      var lastName = document.getElementById('lastName').value;
 
+      // Add your registration code here using the firstName and lastName variables
+
+      alert('Registration successful!');
+      window.location.href = 'success.html'
+    }
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
-      return;
     }
-
+  
     // Passwords match, proceed with registration
     // Add your registration logic here
     console.log("Registration successful");
@@ -57,5 +65,5 @@ $(function() {
     window.location.href = "search-results.html?q=" + encodeURIComponent(searchQuery);
 }
 var searchnameInput = document.getElementById("search");
-var searchnameValue = usernameInput.value;
+var searchnameValue = searchnameInput.value;
 console.log(searchnameValue);
