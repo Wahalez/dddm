@@ -72,15 +72,15 @@ const products_Schema = new Schema({
 
 const wishlists_Schema = new Schema({user_id: ObjectId, product_id: ObjectId});
 
-const WishList = mongoose.model('wishlist', wishlists_Schema);
-const Product = mongoose.model('products', products_Schema);
-const Platform = mongoose.model('platforms', platforms_Schema);
-const Order = mongoose.model('orders', orders_Schema);
-const Coupon = mongoose.model('coupons', coupons_Schema);
-const Status = mongoose.model('statuses', statuses_Schema);
-const Category = mongoose.model('categories', categories_Schema);
-const Vendor = mongoose.model('vendors', vendors_Schema);
-const UserType = mongoose.model('user_types', user_types_Schema);
+const WishList = mongoose.model('WishList', wishlists_Schema, 'wishlist');
+const Product = mongoose.model('Product', products_Schema, 'products');
+const Platform = mongoose.model('Platform', platforms_Schema, 'platforms');
+const Order = mongoose.model('Order', orders_Schema, 'orders');
+const Coupon = mongoose.model('Coupon', coupons_Schema, 'coupons');
+const Status = mongoose.model('Status', statuses_Schema, 'statuses');
+const Category = mongoose.model('Category', categories_Schema, 'categories');
+const Vendor = mongoose.model('Vendor', vendors_Schema, 'vendors');
+const UserType = mongoose.model('UserType', user_types_Schema, 'user_types');
 const User = mongoose.model('users', user_Schema);
 
 module.exports.User = User;

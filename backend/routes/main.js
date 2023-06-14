@@ -12,7 +12,6 @@ router.get("/", (req, res) => {
 
 router.get("/test", (req, res) => {
     db_funcs.getAllUsers().then(query => {
-        console.log(query);
         res.send(query);
     });
 });
