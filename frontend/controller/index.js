@@ -1,13 +1,13 @@
 function refreshPage() {
     window.location.reload();
 }
-$('#loginBtn').click(function() {
+document.getElementById('loginBtn').addEventListener('click', function() {
   window.location.href = './../view/login.html';
 });
  document.getElementById('homebtn').addEventListener('click', function() {
     window.location.href = './../view/index.html';
  });
- document.getElementById('register').addEventListener('click', function() {
+ document.getElementById('registerbtn').addEventListener('click', function() {
     window.location.href = './../view/Register.html';
 });
  document.getElementById('console').addEventListener('click', function() {
@@ -15,6 +15,9 @@ $('#loginBtn').click(function() {
 });
   document.getElementById('allGames').addEventListener('click', function() {
     window.location.href = './../view/games.html';
+  });
+  document.getElementById('playStation').addEventListener('click', function() {
+    window.location.href = './../view/sonyPlaystation.html';
   });
   function comparePasswords(event) {
     event.preventDefault(); // Prevent form submission
