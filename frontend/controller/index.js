@@ -2,19 +2,19 @@ function refreshPage() {
     window.location.reload();
 }
 $('#loginBtn').click(function() {
-  window.location.href = 'login.html';
+  window.location.href = './../view/login.html';
 });
  document.getElementById('homebtn').addEventListener('click', function() {
-    window.location.href = 'login.html';
+    window.location.href = './../view/index.html';
  });
  document.getElementById('register').addEventListener('click', function() {
-    window.location.href = 'Register.html';
+    window.location.href = './../view/Register.html';
 });
  document.getElementById('console').addEventListener('click', function() {
-    window.location.href = 'console.html';
+    window.location.href = './../view/console.html';
 });
   document.getElementById('allGames').addEventListener('click', function() {
-    window.location.href = 'games.html';
+    window.location.href = './../view/games.html';
   });
   function comparePasswords(event) {
     event.preventDefault(); // Prevent form submission
