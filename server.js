@@ -7,14 +7,14 @@ dotenv.config();
 main();
 
 async function main() {
-
     try {
         await mongoose.connect(process.env.DB_CONNECTION);
         console.log('Successfully connected to db');
-        server();
     } catch (err) {
         console.error('Couldn\'t connect to db\n', err);
+        return;
     }
+    server();
 }
 function server() {
     var app = express();
