@@ -1,12 +1,19 @@
-// Make a request to get info about the country Israel
-const apiUrl = 'https://nominatim.openstreetmap.org/search?country=Israel&format=json&limit=1000&addressdetails=1&extratags=1&namedetails=1&featuretype=city';
+// Add an event listener to the button
+const button = document.getElementById("myButton");
+button.addEventListener("click", fetchData);
 
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    // Extract the city names
-    const cities = data.map(result => result.address.city);
-
-    // Print the city names
-    cities.forEach(city => console.log(city));
-  });
+// Function to fetch data from the API
+function fetchData() {
+  fetch(
+    "http://api.geonames.org/searchJSON?country=IL&featureCode=PPL&maxRows=1000&username=dddm"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      const cities = data.geonames;
+      const arrCities = cities.map((city) => city.name);
+      console.log(arrCities);
+    })
+    .catch((error) => {
+      console.log("Error:", error);
+    });
+}
