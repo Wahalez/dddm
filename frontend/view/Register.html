@@ -87,17 +87,16 @@
               </select>
             </div>
             <div class="row">
-              <div class="col-md-6">
-                <label for="homenumber">Home Number:</label>
-                <input type="text" id="homenumber" name="homenumber" class="form-control" placeholder="Enter home number" required>
-              </div>
-              <div class="col-md-6">
+              
+              <div class="col-md-8">
                 <label for="street">Street:</label>
                 <input type="text" id="street" name="street" class="form-control" placeholder="Enter street name" required>
               </div>
+              <div class="col-md-4">
+                <label for="homenumber">Home Number:</label>
+                <input type="number" id="homenumber" name="homenumber" class="form-control" placeholder="Enter home number" pattern="[0-9]+" title="Please enter only numbers" required>
+              </div>              
             </div>
-       
-          
           </div>
           <button type="submit" class="btn btn-primary">Register</button>
         </form>
