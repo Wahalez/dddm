@@ -71,20 +71,7 @@
             <h3 class="form-label">Add your Address:</h3>
             <div class="form-group flex-container">
               <label for="city">City:</label>
-              <select id="city" name="city" class="form-control form-select-arrow" required>
-                <option value="Tel Aviv">Tel Aviv</option>
-                <option value="Jerusalem">Jerusalem</option>
-                <option value="Zefat">Zefat</option>
-                <option value="Rishon Lezion">Rishon Lezion</option>
-                <option value="Holon">Holon</option>
-                <option value="Bat Yam">Bat Yam</option>
-                <option value="Dimona">Dimona</option>
-                <option value="Beer Sheva">Beer Sheva</option>
-                <option value="Ashdod">Ashdod</option>
-                <option value="Petah Tikva">Petah Tikva</option>
-                <option value="Eilat">Eilat</option>
-                <option value="Kfar Saba">Kfar Saba</option>
-              </select>
+              <input type="text" id="city" name="city" class="form-control" placeholder="Enter city name" required>
             </div>
             <div class="row">
               
@@ -107,8 +94,11 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="./../controller/index.js"></script>
+  <script src="./../api/Api.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+ 
+
 </body>
 
 </html>
