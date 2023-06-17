@@ -1,16 +1,36 @@
 const express = require('express');
 const path = require('path');
+const mongoose = require('mongoose'); // mongoose is a singleton
+const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
 
-var app = express();
+dotenv.config();
+main();
 
-const port = process.env.PORT || 8080;
-const routes_path = path.join(__dirname, "/backend/routes/");
+async function main() {
+    try {
+        await mongoose.connect(process.env.DB_CONNECTION);
+        console.log('Successfully connected to db');
+    } catch (err) {
+        console.error('Couldn\'t connect to db\n', err);
+        return;
+    }
+    server();
+}
+function server() {
+    const app = express();
+    app.use(bodyParser.urlencoded({ extended: true }));
 
-// serve static files
-app.use(express.static(path.join(__dirname, "/frontend")));
+    const port = process.env.PORT || 8080;
+    const routes_path = path.join(__dirname, '/backend/routes/');
 
-// routes
-const mainRoute = require(routes_path + "main");
-app.use("/", mainRoute);
+    // serve static files
+    app.use(express.static(path.join(__dirname, '/frontend')));
 
-app.listen(port);
+    // routes
+    const _route = require(routes_path + 'routes');
+    app.use('/', _route);
+
+    console.log('App listens on port:', port);
+    app.listen(port);
+}
