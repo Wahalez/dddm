@@ -27,25 +27,27 @@ $(document).ready(function() {
   
   function comparePasswords(event) {
     event.preventDefault(); // Prevent form submission
-
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+  
+    const password = $("#password").val();
+    const confirmPassword = $("#confirmPassword").val();
     if (password === confirmPassword) {
       // Passwords match, proceed with registration logic
-      var firstName = document.getElementById('firstName').value;
-      var lastName = document.getElementById('lastName').value;
-
+      var firstName = $("#firstName").val();
+      var lastName = $("#lastName").val();
+  
       // Add your registration code here using the firstName and lastName variables
-
+  
       alert('Registration successful!');
-      window.location.href = 'success.html'
-    }
-    if (password !== confirmPassword) {
+      window.location.href = 'success.html';
+    } else {
       alert("Passwords do not match!");
     }
-
-} 
-
+  }
+  
+  $(function() {
+    $("#registrationForm").submit(comparePasswords);
+  });
+  
 $(function() {
     var availableTags = [
       "Sony playstations",
@@ -70,6 +72,3 @@ $(function() {
 
     window.location.href = "search-results.html?q=" + encodeURIComponent(searchQuery);
 }
-var searchnameInput = document.getElementById("search");
-var searchnameValue = searchnameInput.value;
-console.log(searchnameValue);
