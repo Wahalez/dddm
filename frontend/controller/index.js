@@ -35,10 +35,7 @@ document.getElementById('loginBtn').addEventListener('click', function() {
     if (password !== confirmPassword) {
       alert("Passwords do not match!");
     }
-  
-    // Passwords match, proceed with registration
-    // Add your registration logic here
-    console.log("Registration successful");
+
 } 
 
 $(function() {
