@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mongoose = require('mongoose'); // mongoose is a singleton
 const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
 
 dotenv.config();
 main();
@@ -17,7 +18,8 @@ async function main() {
     server();
 }
 function server() {
-    var app = express();
+    const app = express();
+    app.use(bodyParser.urlencoded({ extended: true }));
 
     const port = process.env.PORT || 8080;
     const routes_path = path.join(__dirname, '/backend/routes/');
@@ -26,8 +28,8 @@ function server() {
     app.use(express.static(path.join(__dirname, '/frontend')));
 
     // routes
-    const mainRoute = require(routes_path + 'main');
-    app.use('/', mainRoute);
+    const _route = require(routes_path + 'routes');
+    app.use('/', _route);
 
     console.log('App listens on port:', port);
     app.listen(port);
