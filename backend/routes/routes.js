@@ -10,6 +10,10 @@ router.get("/", (req, res) => {
     res.sendFile(views_dir + "index.html");
 });
 
+router.get("/register", (req, res) => {
+    res.sendFile(views_dir + "register.html");
+});
+
 router.post("/new_user", (req, res) => {
     console.log(req.body);
 })
