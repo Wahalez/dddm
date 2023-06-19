@@ -24,8 +24,10 @@ router.get("/register", async (req, res) => {
   const { username, password, email, fname, lname, phone, birthday, address } = req.query;
   try {
     const savedUser = await db_funcs.addUser(username, password, email, fname, lname, phone, birthday, address);
+    console.log('User registered successfully:', savedUser);
     res.send(savedUser);
   } catch (error) {
+    console.error('Error registering user:', error);
     res.status(500).send('Error registering user.');
   }
 });

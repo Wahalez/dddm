@@ -22,21 +22,22 @@ const handle_register  = (event) => {
         // continue
         alert("chupapi");
         $.post("/new_user", {fname: "chupapi"});
-    }
+    }};
 
+    const createUserData = () => {
         const username = $('#username').val();
         const password = $('#password').val();
         const email = $('#email').val();
         const fname = $('#firstName').val();
         const lname = $('#lastName').val();
-        const phone = $('#homenumber').val;
+        const phone = $('#homenumber').val();
         const birthday = $('#dateOfBirth').val();
         const city = $('#city').val();
         const street = $('#street').val();
         const house_number = $('#homenumber').val();
         const address = `${street}, ${house_number}, ${city}`;
-
-        const userDate = {
+    
+        const userData = {
             username,
             password,
             email,
@@ -46,15 +47,19 @@ const handle_register  = (event) => {
             birthday,
             address
         };
-        $.post('/register', userData)
-    .done(savedUser => {
-        console.log('User registered successfully:', savedUser);
-    })
-    .fail(error => {
-        console.error('Error registering user:', error);
-    });
-
-};
+    
+        return userData;
+    };
+    
+    const addNewUser = (userData) => {
+        $.post('/new_user', userData)
+            .done(savedUser => {
+                console.log('User registered successfully:', savedUser);
+            })
+            .fail(error => {
+                console.error('Error registering user:', error);
+            });
+    };
 
 function comparePasswords(event) {
     const password = document.getElementById("password").value;
