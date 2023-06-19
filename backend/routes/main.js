@@ -16,5 +16,18 @@ router.get("/test", (req, res) => {
     });
 });
 
-
 module.exports = router;
+
+router.get("/test", async (req,) => {
+    const { username, password, email, fname, lname, phone, birthday, address } = req.query;
+    try {
+        const savedUser = await db_funcs.addUser(username, password, email, fname, lname, phone, birthday, address);
+        res.send(savedUser);
+      } catch (error) {
+        res.status(500).send('Error registering user.');
+      }
+    });
+
+    module.exports = {
+        addUser: db_funcs.addUser
+      };
