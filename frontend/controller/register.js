@@ -16,13 +16,13 @@ $(document).ready(() => {
     });
 });
 
-const handle_register  = (event) => {
-    event.preventDefault(); 
-    if(comparePasswords(event)){
-        // continue
-        alert("chupapi");
-        $.post("/new_user", {fname: "chupapi"});
-    }};
+const handle_register = (event) => {
+    event.preventDefault();
+    if (comparePasswords(event)) {
+        const userData = createUserData();
+        addNewUser(userData);
+    }
+};
 
     const createUserData = () => {
         const username = $('#username').val();
@@ -52,7 +52,7 @@ const handle_register  = (event) => {
     };
     
     const addNewUser = (userData) => {
-        $.post('/new_user', userData)
+        $.post('create_user', userData)
             .done(savedUser => {
                 console.log('User registered successfully:', savedUser);
             })
