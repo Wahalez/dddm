@@ -18,31 +18,30 @@ async function _getAllUsers() {
     return query;
 }
 
-module.exports = {
-    getAllUsers: _getAllUsers
+async function addUser(username, password, fname, lname, email, phone, birthday, address) {
+    try {
+        const newUser = new User({
+            username,
+            password,
+            email,
+            fname,
+            lname,
+            phone,
+            birthday,
+            address,
+            join_date: new Date()
+        });
+
+        const savedUser = await newUser.save();
+        console.log('User registered successfully:', savedUser);
+        return savedUser;
+    } catch (error) {
+        console.error('Error registering user:', error);
+        throw error;
+    }
 }
 
-async function addUser(username, password, email, fname, lname, phone, birthday, address) {
-    try {
-      const newUser = new User({
-        username,
-        password,
-        email,
-        fname,
-        lname,
-        phone,
-        birthday,
-        address,
-        join_date: new Date()
-      });
-  
-      const savedUser = await newUser.save();
-      console.log('User registered successfully:', savedUser);
-      return savedUser;
-    } catch (error) {
-      console.error('Error registering user:', error);
-      throw error;
-    }
-  }
-
-
+module.exports = {
+    getAllUsers: _getAllUsers,
+    addUser: addUser
+};

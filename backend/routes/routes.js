@@ -21,8 +21,8 @@ router.get("/test", (req, res) => {
 });
 
 router.get("/register", async (req, res) => {
-  const { username, password, email, fname, lname, phone, birthday, address } = req.query;
-  try {
+  const { username, password, email, fname, lname, phone, birthday, address } = req.query;    console.log(username, password, email, fname, lname, phone, birthday, address) ;
+         try {
     const savedUser = await db_funcs.addUser(username, password, email, fname, lname, phone, birthday, address);
     console.log('User registered successfully:', savedUser);
     res.send(savedUser);
