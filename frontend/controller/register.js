@@ -23,6 +23,37 @@ const handle_register  = (event) => {
         alert("chupapi");
         $.post("/new_user", {fname: "chupapi"});
     }
+
+        const username = $('#username').val();
+        const password = $('#password').val();
+        const email = $('#email').val();
+        const fname = $('#firstName').val();
+        const lname = $('#lastName').val();
+        const phone = $('#homenumber').val;
+        const birthday = $('#dateOfBirth').val();
+        const city = $('#city').val();
+        const street = $('#street').val();
+        const house_number = $('#homenumber').val();
+        const address = `${street}, ${house_number}, ${city}`;
+
+        const userDate = {
+            username,
+            password,
+            email,
+            fname,
+            lname,
+            phone,
+            birthday,
+            address
+        };
+        $.post('/register', userData)
+    .done(savedUser => {
+        console.log('User registered successfully:', savedUser);
+    })
+    .fail(error => {
+        console.error('Error registering user:', error);
+    });
+
 };
 
 function comparePasswords(event) {

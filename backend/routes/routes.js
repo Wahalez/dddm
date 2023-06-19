@@ -22,7 +22,7 @@ router.get("/test", (req, res) => {
 
 module.exports = router;
 
-router.get("/test", async (req,) => {
+router.get("/register", async (req,) => {
     const { username, password, email, fname, lname, phone, birthday, address } = req.query;
     try {
         const savedUser = await db_funcs.addUser(username, password, email, fname, lname, phone, birthday, address);
