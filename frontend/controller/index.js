@@ -1,8 +1,24 @@
+$(document).ready(() => {
+    document.getElementById('loginBtn').addEventListener('click', function () {
+        window.location.href = '/login';
+    });
+    document.getElementById('homebtn').addEventListener('click', function () {
+        window.location.href = '/';
+    });
+    document.getElementById('registerbtn').addEventListener('click', function () {
+        window.location.href = '/register';
+    });
+    document.getElementById('console').addEventListener('click', function () {
+        window.location.href = '/consoles';
+    });
+    document.getElementById('allGames').addEventListener('click', function () {
+        window.location.href = '/games';
+    });
+});
+
 function refreshPage() {
     window.location.reload();
 }
-
-  
 
 // $(function() {
 //     var availableTags = [
@@ -19,9 +35,9 @@ function refreshPage() {
 //     $("#search").autocomplete({
 //       source: availableTags
 //     });
-//   });
+// });
 
-//   function handleSearch(event) {
+// function handleSearch(event) {
 //     event.preventDefault(); // Prevent form submission
 
 //     // Get the search query from the input field
