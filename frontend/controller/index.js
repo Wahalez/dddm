@@ -17,6 +17,10 @@ document.getElementById("allgamesBtn").addEventListener("click", function () {
   window.location.href = "./../view/games.html";
 });
 
+$(document).ready(() => {
+  fetchCities();
+});
+
 function comparePasswords(event) {
   event.preventDefault(); // Prevent form submission
 

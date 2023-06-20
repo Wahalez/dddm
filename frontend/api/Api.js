@@ -1,29 +1,24 @@
-cityArray = async function (request, response) {
+const fetchCities = async function () {
   try {
     const data = await $.ajax({
       url: "https://data.gov.il/api/3/action/datastore_search",
       data: {
         resource_id: "d4901968-dad3-4845-a9b0-a57d027f11ab",
         limit: 10000,
-        q: request.term.toLowerCase(),
       },
     });
 
     const records = data.result.records;
     const cityNames = records.map((record) => record["שם_ישוב_לועזי"]);
 
-    // Filter the city names based on the user's input
-    const filteredCities = cityNames.filter(function (city) {
-      return city.toLowerCase().indexOf(request.term.toLowerCase()) === 0;
-    });
-
-    response(filteredCities);
+    cityArray = cityNames;
+    console.log(cityArray);
   } catch (error) {
     console.error("Error:", error);
-    response([]);
   }
 };
 
+//TODO: move to controller of register.js
 $("#city").autocomplete({
   minLength: 2,
   source: cityArray, // Set cityArray as the source for autocomplete suggestions
