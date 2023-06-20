@@ -6,6 +6,8 @@ const router = express.Router();
 
 const views_dir = path.join(__dirname, '../../frontend/view/');
 
+router.use(express.json());
+
 router.get("/", (req, res) => {
   res.sendFile(views_dir + "index.html");
 });
@@ -25,9 +27,10 @@ router.get("/test", (req, res) => {
 });
 
 router.post("/create_user", async (req, res) => {
-  const { username, password, email, fname, lname, phone, birthday, address } = req.body;    console.log(username, password, email, fname, lname, phone, birthday, address) ;
+  const { username, password, type, fname, lname, email, phone, birthday, address, } = req.body;    
+  console.log(username, password, email, fname, lname, phone, birthday, address) ;
          try {
-    const savedUser = await db_funcs.addUser(username, password, email, fname, lname, phone, birthday, address);
+    const savedUser = await db_funcs.addUser(username, password, type, fname, lname, email, phone, birthday, address);
     console.log('User registered successfully:', savedUser);
     res.send(savedUser);
   } catch (error) {

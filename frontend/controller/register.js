@@ -8,12 +8,12 @@ $(document).ready(() => {
     document.getElementById('registerbtn').addEventListener('click', function() {
          window.location.href = '/register';
     });
-    document.getElementById('console').addEventListener('click', function() {
-        window.location.href = '/consoles';
-    });
-    document.getElementById('allGames').addEventListener('click', function() {
-        window.location.href = '/games';
-    });
+    //document.getElementById('console').addEventListener('click', function() {
+      //  window.location.href = '/consoles';
+    //);
+   //document.getElementById('allGames').addEventListener('click', function() {
+     //   window.location.href = '/games';
+    //});
 });
 
 const handle_register = (event) => {
@@ -35,15 +35,16 @@ const handle_register = (event) => {
         const city = $('#city').val();
         const street = $('#street').val();
         const house_number = $('#homenumber').val();
-        const address = `${street}, ${house_number}, ${city}`;
+        const address = {city,street,house_number};
     
         const userData = {
             username,
             password,
-            email,
+            type: '1',
             fname,
             lname,
-            phone,
+            email,
+            phone: '1',
             birthday,
             address
         };
@@ -52,7 +53,7 @@ const handle_register = (event) => {
     };
     
     const addNewUser = (userData) => {
-        $.post('create_user', userData)
+        $.post('/create_user', userData)
             .done(savedUser => {
                 console.log('User registered successfully:', savedUser);
             })
