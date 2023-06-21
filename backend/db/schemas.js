@@ -18,15 +18,15 @@ const user_Schema = new Schema({
         house_number: String
     },
     join_date: Date
-});
+},{ versionKey: false });
 
-const user_types_Schema = new Schema({type: String});
+const user_types_Schema = new Schema({type: String},{ versionKey: false });
 
-const vendors_Schema = new Schema({name: String, website: String});
+const vendors_Schema = new Schema({name: String, website: String},{ versionKey: false });
 
-const categories_Schema = new Schema({name: String});
+const categories_Schema = new Schema({name: String},{ versionKey: false });
 
-const statuses_Schema = new Schema({status: String});
+const statuses_Schema = new Schema({status: String},{ versionKey: false });
 
 const coupons_Schema = new Schema({
     end_date: Date,
@@ -36,7 +36,7 @@ const coupons_Schema = new Schema({
             discount: Number
         }
     ]
-});
+},{ versionKey: false });
 
 const orders_Schema = new Schema({
     user_id: ObjectId,
@@ -49,9 +49,9 @@ const orders_Schema = new Schema({
             price_for_order: Number
         }
     ]
-});
+},{ versionKey: false });
 
-const platforms_Schema = new Schema({name: String});
+const platforms_Schema = new Schema({name: String},{ versionKey: false });
 
 const products_Schema = new Schema({
     name: String,
@@ -68,9 +68,9 @@ const products_Schema = new Schema({
             changed_by: ObjectId
         }
     ]
-});
+},{ versionKey: false });
 
-const wishlists_Schema = new Schema({user_id: ObjectId, product_id: ObjectId});
+const wishlists_Schema = new Schema({user_id: ObjectId, product_id: ObjectId},{ versionKey: false });
 
 const WishList = mongoose.model('WishList', wishlists_Schema, 'wishlist');
 const Product = mongoose.model('Product', products_Schema, 'products');
@@ -81,7 +81,7 @@ const Status = mongoose.model('Status', statuses_Schema, 'statuses');
 const Category = mongoose.model('Category', categories_Schema, 'categories');
 const Vendor = mongoose.model('Vendor', vendors_Schema, 'vendors');
 const UserType = mongoose.model('UserType', user_types_Schema, 'user_types');
-const User = mongoose.model('users', user_Schema);
+const User = mongoose.model('User', user_Schema, 'users');
 
 module.exports.User = User;
 module.exports.Product = Product;
