@@ -15,25 +15,29 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </head>
     <body>
-            <div class="container mt-5">
-                <div class="row justify-content-center">
-                    <div class="col-md-6">
-                        <h1 id="register" class="mb-4">Vendors</h1>
-                        <div class="mb-3">
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="content col-md-6">
+                    <h1 id="register" class="mb-4">Vendors</h1>
+                    <div class="mb-3">
+
+                        <div class="add-vendor-wrapper">
                             <label for="name" class="label">Name</label>
                             <input type="text" class="input-group-text" id="name" placeholder="Vendors name" required>
                             <label for="lastName" class="label">Site</label>
                             <input type="text" class="input-group-text" id="site" placeholder="Vendors site" required>
                             <button id="addButton" type="submit" class="btn btn-primary">Add</button>
-                            <table id="vendorTable">
-                                <tr><th>Name</th>
-                                <th>Site</th></tr>
-                                <tr>                                
-                                </tr>
-                            </table>
-                            </div>
-                    </div>
+                        </div>
+
+                        <table id="vendorTable">
+                            <tr><th>Name</th>
+                            <th>Site</th></tr>
+                            <tr>                                  
+                            </tr>
+                        </table>
+                        </div>
                 </div>
-        </div>
-    </body>
+            </div>
+    </div>
+</body>
 </html>

@@ -70,9 +70,24 @@ async function deleteVendor(name, site) {
     }
   }
 
+  async function editVendor(id, name, website) {
+    try {
+      const updatedVendor = await Vendor.findByIdAndUpdate(
+        id,
+        { name, website },
+        { new: true }
+      );
+      console.log('Vendor updated successfully:', updatedVendor);
+      return updatedVendor;
+    } catch (error) {
+      console.error('Error updating vendor:', error);
+      throw error;
+    }
+  }
+
 module.exports = {
     getAllUsers: _getAllUsers,
     addUser: addUser,
     addVendor: addVendor,
-    deleteVendor: deleteVendor
+    deleteVendor: deleteVendor,
 };

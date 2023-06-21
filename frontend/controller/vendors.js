@@ -1,18 +1,23 @@
 $(document).ready(function() {
-    $('#addButton').on('click', function(){
-        var name = $('#name').val();
-        var site = $('#site').val();
-
-        var newRow = $('<tr>');
-        newRow.append('<td class="name">' + name + '</td>');
-        newRow.append('<td class="site">' + site + '</td>');
-        newRow.append('<button class="deleteButton">Delete</button>');
-        newRow.append('<button class="editButton">Edit</button>');
-
-        $('#vendorTable').append(newRow);
-
-        $('#name').val('');
-        $('#site').val('');
+    $("#addButton").on("click", function () {
+        var name = $("#name").val();
+        var site = $("#site").val();
+    
+        var newRow = $("<tr>");
+        newRow.append("<td class='name'>" + name + "</td>");
+        newRow.append("<td class='site'>" + site + "</td>");
+        let buttonsHtml = `
+                <td class="buttons-wrapper">
+                    <button class="deleteButton">Delete</button>
+                    <button class="editButton">Edit</button>
+                </td>
+            `;
+        newRow.append(buttonsHtml);
+    
+        $("#vendorTable").append(newRow);
+    
+        $("#name").val("");
+        $("#site").val("");
 
         const vendorData = {
             name: name,
@@ -49,8 +54,18 @@ $(document).ready(function() {
         var newName = prompt('Enter new name:', name);
         var newSite = prompt('Enter new site:', site);
 
-        row.find('.name').text(newName);
-        row.find('.site').text(newSite);
+        if (newName && newSite) {
+            row.find('.name').text(newName);
+            row.find('.site').text(newSite);
+        
+            var vendorData = {
+              name: newName,
+              site: newSite,
+            };
+        
+            updateVendor(vendorData); // Call the updateVendor function
+          }
+
     });
 
     const addNewVendor = (vendorData) => {
