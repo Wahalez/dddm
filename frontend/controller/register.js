@@ -1,20 +1,4 @@
 $(document).ready(() => {
-  document.getElementById("loginBtn").addEventListener("click", function () {
-    window.location.href = "/login";
-  });
-  document.getElementById("homebtn").addEventListener("click", function () {
-    window.location.href = "/";
-  });
-  document.getElementById("registerbtn").addEventListener("click", function () {
-    window.location.href = "/register";
-  });
-  // document.getElementById('console').addEventListener('click', function () {
-  //     window.location.href = '/consoles';
-  // });
-  // document.getElementById('allGames').addEventListener('click', function () {
-  //     window.location.href = '/games';
-  // });
-
   fetchCities();
 
   $("#city").autocomplete({
@@ -27,21 +11,6 @@ $(document).ready(() => {
       resolve(filteredCities);
     },
   });
-});
-
-//dynamically load the header content
-document.addEventListener("DOMContentLoaded", function () {
-  const header = document.getElementById("header");
-  if (header) {
-    fetch("header.html")
-      .then((response) => response.text())
-      .then((content) => {
-        header.innerHTML = content;
-      })
-      .catch((error) => {
-        console.error("Error loading header:", error);
-      });
-  }
 });
 
 const handle_register = (event) => {
