@@ -18,6 +18,12 @@ async function _getAllUsers() {
   return query;
 }
 
+async function _getAllProducts() {
+  const query = await Product.find({});
+  console.log(query);
+  return query;
+}
+
 async function addProduct(
   name,
   description,

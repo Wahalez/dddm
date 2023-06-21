@@ -129,18 +129,6 @@ router.post("/new_user", (req, res) => {
   console.log(req.body);
 });
 
-router.get("/test", (req, res) => {
-  db_funcs.getAllUsers().then((query) => {
-    res.send(query);
-  });
-});
-
-router.get("/test2", (req, res) => {
-  db_funcs.getAllProducts().then((query) => {
-    res.send(query);
-  });
-});
-
 router.post("/create_product", async (req, res) => {
   const {
     name,
@@ -180,6 +168,18 @@ router.post("/create_product", async (req, res) => {
     console.error("Error adding product:", error);
     res.status(500).send("Error adding product.");
   }
+});
+
+router.get("/test", (req, res) => {
+  db_funcs.getAllUsers().then((query) => {
+    res.send(query);
+  });
+});
+
+router.get("/test2", (req, res) => {
+  db_funcs.getAllProducts().then((query) => {
+    res.send(query);
+  });
 });
 
 module.exports = router;
