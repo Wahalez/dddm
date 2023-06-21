@@ -54,25 +54,27 @@ function refreshPage() {
 
 
 //dan
-const handleImageUpload = event => {
-    const files = event.target.files
-    const formData = new FormData()
-    formData.append('myFile', files[0])
+function uploadImage(event) {
+  event.preventDefault();
+
+  const fileInput = document.getElementById("imageInput");
+  const file = fileInput.files[0];
   
-    fetch('/saveImage', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data.path)
-    })
-    .catch(error => {
-      console.error(error)
-    })
-  }
-  
-  document.querySelector('#fileUpload').addEventListener('change', event => {
-    handleImageUpload(event)
+  const formData = new FormData();
+  formData.append("image", file);
+  fetch("/upload", {
+    method: "POST",
+    body: formData
   })
+  .then(response => {
+    if (response.ok) {
+      console.log("Image uploaded!");
+    } else {
+      console.error("Image upload failed.");
+    }
+  })
+  .catch(error => {
+    console.error("An error occurred:", error);
+  });
+}
   //dan^

@@ -24,30 +24,16 @@ router.get("/test", (req, res) => {
     });
 });
 
+const multer = require("multer");
+
+const upload = multer({ dest: "uploads/" }); 
+
+router.post("/upload", upload.single("image"), (req, res) => {
+
+  const imageFile = req.file;
+  
+  res.sendStatus(200);
+});
+
 
 module.exports = router;
-
-
-const fileupload = require('express-fileupload')
-app.use(
-    fileupload(),
-
-    app.post('/saveImage', (req, res) => {
-        const fileName = req.files.myFile.name
-        const path = __dirname + '/images/' + fileName
-      
-        image.mv(path, (error) => {
-          if (error) {
-            console.error(error)
-            res.writeHead(500, {
-              'Content-Type': 'application/json'
-            })
-            res.end(JSON.stringify({ status: 'error', message: error }))
-            return
-          }
-          res.writeHead(200, {
-            'Content-Type': 'application/json'
-          })
-          res.end(JSON.stringify({ status: 'success', path: '/img/houses/' + fileName }))
-        })
-      }))

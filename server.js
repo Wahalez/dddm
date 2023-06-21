@@ -4,6 +4,7 @@ const mongoose = require('mongoose'); // mongoose is a singleton
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 
+
 dotenv.config();
 main();
 
@@ -20,7 +21,6 @@ async function main() {
 function server() {
     const app = express();
     app.use(bodyParser.urlencoded({ extended: true }));
-
     const port = process.env.PORT || 8080;
     const routes_path = path.join(__dirname, '/backend/routes/');
 
