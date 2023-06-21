@@ -45,7 +45,6 @@ app.use(
             res.end(JSON.stringify({ status: 'error', message: error }))
             return
           }
-      
           res.writeHead(200, {
             'Content-Type': 'application/json'
           })
