@@ -11,32 +11,39 @@ const {
     Vendor,
     Category
 } = require('./schemas');
-const { ObjectId } = require('mongodb');
+const {ObjectId} = require('mongodb');
 
 async function _getAllUsers() {
     const query = await User.find({});
-    console.log(query);
     return query;
 }
 
-async function addUser(username, password, type, fname, lname, email, phone, birthday, address) {
+async function _getUserTypes(q = {}, opt = {}) {
+    const query = await UserType.find(q, opt);
+    return query;
+}
+
+async function _addUser(username, password, fname, lname, email, phone, birthday, address) {
+
+    const userType = await _getUserTypes({type: 'User'});
+
     try {
         const newUser = new User({
-      username: username,
-      password: password,
-      type: new ObjectId,
-      fname: fname,
-      lname: lname,
-      email: email,
-      phone: phone,
-      birthday: birthday,
-      address: address,
-      join_date: new Date()
-    });
-    console.log(newUser);
+            username: username,
+            password: password,
+            type: userType[0]._id,
+            fname: fname,
+            lname: lname,
+            email: email,
+            phone: phone,
+            birthday: birthday,
+            address: address,
+            join_date: new Date()
+        });
+
         const savedUser = await newUser.save();
-        console.log('User registered successfully:', savedUser);
         return savedUser;
+
     } catch (error) {
         console.error('Error registering user:', error);
         throw error;
@@ -90,4 +97,6 @@ module.exports = {
     addUser: addUser,
     addVendor: addVendor,
     deleteVendor: deleteVendor,
+    addUser: _addUser,
+    getUserTypes: _getUserTypes
 };
