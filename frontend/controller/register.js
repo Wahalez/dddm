@@ -76,6 +76,7 @@ const createUserData = () => {
     const city = $('#city').val();
     const street = $('#street').val();
     const house_number = $('#homenumber').val();
+
     const address = {
         city,
         street,
@@ -85,7 +86,6 @@ const createUserData = () => {
     const userData = {
         username,
         password,
-        type: '1',
         fname,
         lname,
         email,
