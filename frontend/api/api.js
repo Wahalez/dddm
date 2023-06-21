@@ -10,9 +10,8 @@ const fetchCities = async function () {
 
         const records = data.result.records;
         const cityNames = records.map((record) => record["שם_ישוב_לועזי"]);
-
         cityArray = cityNames;
-        console.log(cityArray);
+
     } catch (error) {
         console.error("Error:", error);
     }
