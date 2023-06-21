@@ -1,11 +1,11 @@
 $(document).ready(() => {
-    document.getElementById('loginBtn').addEventListener('click', function () {
-        window.location.href = '/login';
-    });
-    document.getElementById('homebtn').addEventListener('click', function () {
+    // document.getElementById('loginBtn').addEventListener('click', function () {
+    //     window.location.href = '/login';
+    // });
+    document.getElementById('homeBtn').addEventListener('click', function () {
         window.location.href = '/';
     });
-    document.getElementById('registerbtn').addEventListener('click', function () {
+    document.getElementById('registerBtn').addEventListener('click', function () {
         window.location.href = '/register';
     });
     // document.getElementById('console').addEventListener('click', function() {
@@ -47,6 +47,14 @@ $(document).ready(() => {
         });
     });
 
+    $(function () {
+        $('#firstName').on('input', function () {
+            var inputValue = $(this).val();
+            var sanitizedValue = sanitizeInput(inputValue);
+            $(this).val(sanitizedValue);
+        });
+    });
+
 });
 
 const handle_register = (event) => {
@@ -63,7 +71,7 @@ const createUserData = () => {
     const email = $('#email').val();
     const fname = $('#firstName').val();
     const lname = $('#lastName').val();
-    const phone = $('#homenumber').val();
+    const phone = $('#phone_start').val() + '-' + $('#phoneNumber').val();
     const birthday = $('#dateOfBirth').val();
     const city = $('#city').val();
     const street = $('#street').val();
