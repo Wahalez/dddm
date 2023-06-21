@@ -41,7 +41,7 @@ $(function() {
       var sanitized = input.replace(/[^a-zA-Z]/g, '');
       return sanitized;
     }
-  
+  });
 const handle_register = (event) => {
     event.preventDefault();
     if (comparePasswords(event)) { // continue
