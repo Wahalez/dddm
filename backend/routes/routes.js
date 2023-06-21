@@ -6,6 +6,7 @@ const fs = require("fs");
 const router = express.Router();
 
 const views_dir = path.join(__dirname, "../../frontend/view/");
+const controller_dir = path.join(__dirname, "../../frontend/controller/");
 
 router.get("/", (req, res) => {
   fs.readFile(views_dir + "header.html", "utf8", (err, headerContent) => {
@@ -21,7 +22,27 @@ router.get("/", (req, res) => {
         res.sendStatus(500);
         return;
       }
-      res.send(indexContent + headerContent);
+
+      fs.readFile(
+        controller_dir + "header.js",
+        "utf8",
+        (err, headerJSContent) => {
+          if (err) {
+            console.error("Error reading header.js file:", err);
+            res.sendStatus(500);
+            return;
+          }
+
+          // Combine header content, register content, and header.js content
+          const combinedContent =
+            headerContent +
+            indexContent +
+            "<script>" +
+            headerJSContent +
+            "</script>";
+          res.send(combinedContent);
+        }
+      );
     });
   });
 });
@@ -40,7 +61,27 @@ router.get("/register", (req, res) => {
         res.sendStatus(500);
         return;
       }
-      res.send(registerContent + headerContent);
+
+      fs.readFile(
+        controller_dir + "header.js",
+        "utf8",
+        (err, headerJSContent) => {
+          if (err) {
+            console.error("Error reading header.js file:", err);
+            res.sendStatus(500);
+            return;
+          }
+
+          // Combine header content, register content, and header.js content
+          const combinedContent =
+            headerContent +
+            registerContent +
+            "<script>" +
+            headerJSContent +
+            "</script>";
+          res.send(combinedContent);
+        }
+      );
     });
   });
 });
@@ -53,13 +94,33 @@ router.get("/login", (req, res) => {
       return;
     }
 
-    fs.readFile(views_dir + "login.html", "utf8", (err, loginContent) => {
+    fs.readFile(views_dir + "register.html", "utf8", (err, loginContent) => {
       if (err) {
         console.error("Error reading index file:", err);
         res.sendStatus(500);
         return;
       }
-      res.send(loginContent + headerContent);
+
+      fs.readFile(
+        controller_dir + "header.js",
+        "utf8",
+        (err, headerJSContent) => {
+          if (err) {
+            console.error("Error reading header.js file:", err);
+            res.sendStatus(500);
+            return;
+          }
+
+          // Combine header content, register content, and header.js content
+          const combinedContent =
+            headerContent +
+            loginContent +
+            "<script>" +
+            headerJSContent +
+            "</script>";
+          res.send(combinedContent);
+        }
+      );
     });
   });
 });
