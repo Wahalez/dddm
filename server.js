@@ -3,7 +3,10 @@ const path = require('path');
 const mongoose = require('mongoose'); // mongoose is a singleton
 const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const sessions = require('express-session');
 
+var session;
 dotenv.config();
 main();
 
@@ -19,10 +22,24 @@ async function main() {
 }
 function server() {
     const app = express();
-    app.use(bodyParser.urlencoded({ extended: true }));
-
     const port = process.env.PORT || 8080;
     const routes_path = path.join(__dirname, '/backend/routes/');
+
+    app.use(bodyParser.urlencoded({extended: true}));
+
+    // setup session management
+    const cookie_timeout = 1000 * 60 * 60 * 24;
+    app.use(sessions({
+        secret: process.env.SESSION_KEY,
+        saveUninitialized: true,
+        cookie: {
+            maxAge: cookie_timeout
+        },
+        resave: false
+    }));
+
+    // setup cookie parser
+    app.use(cookieParser());
 
     // serve static files
     app.use(express.static(path.join(__dirname, '/frontend')));
