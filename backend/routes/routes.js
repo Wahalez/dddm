@@ -135,4 +135,51 @@ router.get("/test", (req, res) => {
   });
 });
 
+router.get("/test2", (req, res) => {
+  db_funcs.getAllProducts().then((query) => {
+    res.send(query);
+  });
+});
+
+router.post("/create_product", async (req, res) => {
+  const {
+    name,
+    description,
+    category_id,
+    platform_id,
+    vendor_id,
+    stock,
+    image,
+    pricing,
+  } = req.body;
+
+  console.log(
+    name,
+    description,
+    category_id,
+    platform_id,
+    vendor_id,
+    stock,
+    image,
+    pricing
+  );
+  try {
+    const addedProduct = await db_funcs.addProduct(
+      name,
+      description,
+      category_id,
+      platform_id,
+      vendor_id,
+      stock,
+      image,
+      pricing
+    );
+    console.log("Product added successfully:", addedProduct);
+    res.send(addedProduct);
+  } catch (error) {
+    console.error("Error adding product:", error);
+    res.status(500).send("Error adding product.");
+  }
+});
+
 module.exports = router;
