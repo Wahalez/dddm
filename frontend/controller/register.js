@@ -40,8 +40,20 @@ $(function() {
       // Remove any non-letter characters using regular expression
       var sanitized = input.replace(/[^a-zA-Z]/g, '');
       return sanitized;
-    }
-  });
+    };
+    $(function() {
+        $('#lastName').on('input', function() {
+          var inputValue = $(this).val();
+          var sanitizedValue = sanitizeInput(inputValue);
+          $(this).val(sanitizedValue);
+        });
+    });
+    
+        function sanitizeInput(input) {
+          // Remove any non-letter characters using regular expression
+          var sanitized = input.replace(/[^a-zA-Z]/g, '');
+          return sanitized;
+        };
 const handle_register = (event) => {
     event.preventDefault();
     if (comparePasswords(event)) { // continue
