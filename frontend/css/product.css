@@ -1,0 +1,15 @@
+#productName{
+  margin-top: 20px;
+}
+header{
+    margin-bottom: 10px;
+}
+
+.product-template{
+    
+    display: inline-block;
+    align-items: center;
+    margin-bottom: 10px;
+    
+}
+
