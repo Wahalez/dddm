@@ -1,45 +1,61 @@
 $(document).ready(() => {
-    document.getElementById('loginBtn').addEventListener('click', function () {
-        window.location.href = '/login';
-    });
-    document.getElementById('homebtn').addEventListener('click', function () {
-        window.location.href = '/';
-    });
-    document.getElementById('registerbtn').addEventListener('click', function () {
-        window.location.href = '/register';
-    });
-    // document.getElementById('console').addEventListener('click', function () {
-    //     window.location.href = '/consoles';
-    // });
-    // document.getElementById('allGames').addEventListener('click', function () {
-    //     window.location.href = '/games';
-    // });
+  document.getElementById("loginBtn").addEventListener("click", function () {
+    window.location.href = "/login";
+  });
+  document.getElementById("homebtn").addEventListener("click", function () {
+    window.location.href = "/";
+  });
+  document.getElementById("registerbtn").addEventListener("click", function () {
+    window.location.href = "/register";
+  });
+  // document.getElementById('console').addEventListener('click', function () {
+  //     window.location.href = '/consoles';
+  // });
+  // document.getElementById('allGames').addEventListener('click', function () {
+  //     window.location.href = '/games';
+  // });
 
-    fetchCities();
+  fetchCities();
 
-    $("#city").autocomplete({
-        minLength: 2,
-        source: function (request, resolve) { // fetch new values with request.term
-            const filteredCities = getCities().filter(function (city) {
-                return city.toLowerCase().indexOf(request.term.toLowerCase()) === 0;
-            });
-            resolve(filteredCities);
-        }
-    });
+  $("#city").autocomplete({
+    minLength: 2,
+    source: function (request, resolve) {
+      // fetch new values with request.term
+      const filteredCities = getCities().filter(function (city) {
+        return city.toLowerCase().indexOf(request.term.toLowerCase()) === 0;
+      });
+      resolve(filteredCities);
+    },
+  });
+});
 
+//dynamically load the header content
+document.addEventListener("DOMContentLoaded", function () {
+  const header = document.getElementById("header");
+  if (header) {
+    fetch("header.html")
+      .then((response) => response.text())
+      .then((content) => {
+        header.innerHTML = content;
+      })
+      .catch((error) => {
+        console.error("Error loading header:", error);
+      });
+  }
 });
 
 const handle_register = (event) => {
-    event.preventDefault();
-    if (comparePasswords(event)) { // continue
-        alert("chupapi");
-        $.post("/new_user", {fname: "chupapi"});
-    }
+  event.preventDefault();
+  if (comparePasswords(event)) {
+    // continue
+    alert("chupapi");
+    $.post("/new_user", { fname: "chupapi" });
+  }
 };
 
 function comparePasswords(event) {
-    const password = document.getElementById("password").value;
-    const confirmPassword = document.getElementById("confirmPassword").value;
+  const password = document.getElementById("password").value;
+  const confirmPassword = document.getElementById("confirmPassword").value;
 
-    return password === confirmPassword;
+  return password === confirmPassword;
 }

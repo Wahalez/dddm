@@ -1,5 +1,5 @@
 var cityArray = [];
 
 const getCities = () => {
-    return cityArray;
-}
+  return cityArray;
+};

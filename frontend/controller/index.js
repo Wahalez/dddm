@@ -1,23 +1,23 @@
 $(document).ready(() => {
-    document.getElementById('loginBtn').addEventListener('click', function () {
-        window.location.href = '/login';
-    });
-    document.getElementById('homebtn').addEventListener('click', function () {
-        window.location.href = '/';
-    });
-    document.getElementById('registerbtn').addEventListener('click', function () {
-        window.location.href = '/register';
-    });
-    document.getElementById('console').addEventListener('click', function () {
-        window.location.href = '/consoles';
-    });
-    document.getElementById('allGames').addEventListener('click', function () {
-        window.location.href = '/games';
-    });
+  document.getElementById("loginBtn").addEventListener("click", function () {
+    window.location.href = "/login";
+  });
+  document.getElementById("homebtn").addEventListener("click", function () {
+    window.location.href = "/";
+  });
+  document.getElementById("registerbtn").addEventListener("click", function () {
+    window.location.href = "/register";
+  });
+  document.getElementById("console").addEventListener("click", function () {
+    window.location.href = "/consoles";
+  });
+  document.getElementById("allGames").addEventListener("click", function () {
+    window.location.href = "/games";
+  });
 });
 
 function refreshPage() {
-    window.location.reload();
+  window.location.reload();
 }
 
 // $(function() {
