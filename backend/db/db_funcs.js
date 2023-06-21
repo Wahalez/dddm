@@ -94,7 +94,6 @@ async function deleteVendor(name, site) {
 
 module.exports = {
     getAllUsers: _getAllUsers,
-    addUser: addUser,
     addVendor: addVendor,
     deleteVendor: deleteVendor,
     addUser: _addUser,
