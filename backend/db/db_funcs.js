@@ -43,7 +43,36 @@ async function addUser(username, password, type, fname, lname, email, phone, bir
     }
 }
 
+async function addVendor(name,website){
+    try{
+        const newVendor = new Vendor({
+            name: name,
+            website: website,
+        });
+        console.log(newVendor);
+        const savedVendor = await newVendor.save();
+        console.log('Vendor registered successfully:', savedVendor);
+        return savedVendor;
+    } catch (error){
+        console.error('Error registering Vendor:', error);
+        throw error;
+    }
+}
+
+async function deleteVendor(name, site) {
+    try {
+      const deletedVendor = await Vendor.findOneAndDelete({ name, website: site });
+      console.log('Vendor deleted successfully:', deletedVendor);
+      return deletedVendor;
+    } catch (error) {
+      console.error('Error deleting vendor:', error);
+      throw error;
+    }
+  }
+
 module.exports = {
     getAllUsers: _getAllUsers,
-    addUser: addUser
+    addUser: addUser,
+    addVendor: addVendor,
+    deleteVendor: deleteVendor
 };

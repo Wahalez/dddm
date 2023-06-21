@@ -62,6 +62,8 @@ const handle_register = (event) => {
             });
     };
 
+
+
 function comparePasswords(event) {
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
