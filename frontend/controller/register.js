@@ -47,6 +47,14 @@ $(document).ready(() => {
         });
     });
 
+    $(function () {
+        $('#firstName').on('input', function () {
+            var inputValue = $(this).val();
+            var sanitizedValue = sanitizeInput(inputValue);
+            $(this).val(sanitizedValue);
+        });
+    });
+
 });
 
 const handle_register = (event) => {
