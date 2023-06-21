@@ -71,7 +71,7 @@ const createUserData = () => {
     const email = $('#email').val();
     const fname = $('#firstName').val();
     const lname = $('#lastName').val();
-    const phone = $('#homenumber').val();
+    const phone = $('#phone_start').val() + '-' + $('#phoneNumber').val();
     const birthday = $('#dateOfBirth').val();
     const city = $('#city').val();
     const street = $('#street').val();
