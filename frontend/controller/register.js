@@ -1,11 +1,11 @@
 $(document).ready(() => {
-    document.getElementById('loginBtn').addEventListener('click', function () {
-        window.location.href = '/login';
-    });
-    document.getElementById('homebtn').addEventListener('click', function () {
+    // document.getElementById('loginBtn').addEventListener('click', function () {
+    //     window.location.href = '/login';
+    // });
+    document.getElementById('homeBtn').addEventListener('click', function () {
         window.location.href = '/';
     });
-    document.getElementById('registerbtn').addEventListener('click', function () {
+    document.getElementById('registerBtn').addEventListener('click', function () {
         window.location.href = '/register';
     });
     // document.getElementById('console').addEventListener('click', function () {
@@ -54,6 +54,15 @@ $(function() {
           var sanitized = input.replace(/[^a-zA-Z]/g, '');
           return sanitized;
         };
+ $(document).ready(function() {
+      $('#phoneNumber').on('input', function() {
+         var inputValue = $(this).val();
+          if (inputValue.length > 7) {
+              $(this).val(inputValue.slice(0, 7));
+          }
+        });
+    });
+          
 const handle_register = (event) => {
     event.preventDefault();
     if (comparePasswords(event)) { // continue

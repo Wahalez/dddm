@@ -1,19 +1,19 @@
 $(document).ready(() => {
-    document.getElementById('loginBtn').addEventListener('click', function () {
-        window.location.href = '/login';
-    });
-    document.getElementById('homebtn').addEventListener('click', function () {
+    // document.getElementById('loginBtn').addEventListener('click', function () {
+    //     window.location.href = '/login';
+    // });
+    document.getElementById('homeBtn').addEventListener('click', function () {
         window.location.href = '/';
     });
-    document.getElementById('registerbtn').addEventListener('click', function () {
+    document.getElementById('registerBtn').addEventListener('click', function () {
         window.location.href = '/register';
     });
-    document.getElementById('console').addEventListener('click', function () {
-        window.location.href = '/consoles';
-    });
-    document.getElementById('allGames').addEventListener('click', function () {
-        window.location.href = '/games';
-    });
+    // document.getElementById('console').addEventListener('click', function () {
+    //     window.location.href = '/consoles';
+    // });
+    // document.getElementById('allGames').addEventListener('click', function () {
+    //     window.location.href = '/games';
+    // });
 });
 
 function refreshPage() {
