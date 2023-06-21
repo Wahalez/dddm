@@ -16,11 +16,36 @@ $(document).ready(() => {
     // });
 });
 
+function sanitizeInput(input) { // Remove any non-letter characters using regular expression
+    var sanitized = input.replace(/[^a-zA-Z]/g, '');
+    return sanitized;
+};
+$(function () {
+    $('#lastName').on('input', function () {
+        var inputValue = $(this).val();
+        var sanitizedValue = sanitizeInput(inputValue);
+        $(this).val(sanitizedValue);
+    });
+});
+
+function sanitizeInput(input) { // Remove any non-letter characters using regular expression
+    var sanitized = input.replace(/[^a-zA-Z]/g, '');
+    return sanitized;
+};
+$(document).ready(function () {
+    $('#phoneNumber').on('input', function () {
+        var inputValue = $(this).val();
+        if (inputValue.length > 7) {
+            $(this).val(inputValue.slice(0, 7));
+        }
+    });
+});
+
 const handle_register = (event) => {
     event.preventDefault();
-    if (comparePasswords(event)) {
-        const userData = createUserData();
-        addNewUser(userData);
+    if (comparePasswords(event)) { // continue
+        alert("chupapi");
+        $.post("/new_user", {fname: "chupapi"});
     }
 };
 

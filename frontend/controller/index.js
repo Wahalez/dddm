@@ -1,19 +1,19 @@
 $(document).ready(() => {
-    document.getElementById('loginBtn').addEventListener('click', function () {
-        window.location.href = '/login';
-    });
-    document.getElementById('homebtn').addEventListener('click', function () {
+    // document.getElementById('loginBtn').addEventListener('click', function () {
+    //     window.location.href = '/login';
+    // });
+    document.getElementById('homeBtn').addEventListener('click', function () {
         window.location.href = '/';
     });
-    document.getElementById('registerbtn').addEventListener('click', function () {
+    document.getElementById('registerBtn').addEventListener('click', function () {
         window.location.href = '/register';
     });
-    document.getElementById('console').addEventListener('click', function () {
-        window.location.href = '/consoles';
-    });
-    document.getElementById('allGames').addEventListener('click', function () {
-        window.location.href = '/games';
-    });
+    // document.getElementById('console').addEventListener('click', function () {
+    //     window.location.href = '/consoles';
+    // });
+    // document.getElementById('allGames').addEventListener('click', function () {
+    //     window.location.href = '/games';
+    // });
 });
 
 function refreshPage() {
@@ -49,3 +49,30 @@ function refreshPage() {
 // var searchnameInput = document.getElementById("search");
 // var searchnameValue = searchnameInput.value;
 // console.log(searchnameValue);
+
+
+
+
+//dan
+const handleImageUpload = event => {
+    const files = event.target.files
+    const formData = new FormData()
+    formData.append('myFile', files[0])
+  
+    fetch('/saveImage', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log(data.path)
+    })
+    .catch(error => {
+      console.error(error)
+    })
+  }
+  
+  document.querySelector('#fileUpload').addEventListener('change', event => {
+    handleImageUpload(event)
+  })
+  //dan^
