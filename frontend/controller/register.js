@@ -8,6 +8,19 @@ $(document).ready(() => {
     document.getElementById('registerBtn').addEventListener('click', function () {
         window.location.href = '/register';
     });
+    // document.getElementById('console').addEventListener('click', function() {
+    // window.location.href = '/consoles';
+    // );
+    // document.getElementById('allGames').addEventListener('click', function() {
+    // window.location.href = '/games';
+    // });
+
+    $('#phoneNumber').on('input', function () {
+        var inputValue = $(this).val();
+        if (inputValue.length > 7) {
+            $(this).val(inputValue.slice(0, 7));
+        }
+    });
 
     fetchCities();
 
@@ -20,6 +33,20 @@ $(document).ready(() => {
             resolve(filteredCities);
         }
     });
+
+    function sanitizeInput(input) { // Remove any non-letter characters using regular expression
+        var sanitized = input.replace(/[^a-zA-Z]/g, '');
+        return sanitized;
+    };
+
+    $(function () {
+        $('#lastName').on('input', function () {
+            var inputValue = $(this).val();
+            var sanitizedValue = sanitizeInput(inputValue);
+            $(this).val(sanitizedValue);
+        });
+    });
+
 });
 
 const handle_register = (event) => {
@@ -54,7 +81,7 @@ const createUserData = () => {
         fname,
         lname,
         email,
-        phone: '1',
+        phone: phone,
         birthday,
         address
     };
