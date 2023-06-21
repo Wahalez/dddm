@@ -65,7 +65,7 @@ $(function() {
           
 const handle_register = (event) => {
     event.preventDefault();
-    if (comparePasswords(event)) { // continue
+    if (comparePasswords(event)) { // continue  
         alert("chupapi");
         $.post("/new_user", {fname: "chupapi"});
     }
