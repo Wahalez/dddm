@@ -1,1 +1,5 @@
-let addresses = []
+var cityArray = [];
+
+const getCities = () => {
+    return cityArray;
+}
