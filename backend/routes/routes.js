@@ -19,7 +19,6 @@ router.get("/register", (req, res) => {
 router.post("/new_user", (req, res) => {
     console.log(req.body);
 });
-
 router.get("/test", (req, res) => {
     db_funcs.getAllUsers().then(query => {
         res.send(query);
