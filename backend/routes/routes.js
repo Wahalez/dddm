@@ -26,21 +26,6 @@ router.get("/test", (req, res) => {
     });
 });
 
-<<<<<<< HEAD
-const multer = require("multer");
-
-const upload = multer({ dest: "uploads/" }); 
-
-router.post("/upload", upload.single("image"), (req, res) => {
-
-  const imageFile = req.file;
-  
-  res.sendStatus(200);
-});
-
-
-module.exports = router;
-=======
 router.post("/create_user", async (req, res) => {
     const {
         username,
@@ -66,4 +51,3 @@ router.post("/create_user", async (req, res) => {
 
 
 module.exports = router;
->>>>>>> 44e5fa1ec355b6fe2fd19ff189e55be279763164

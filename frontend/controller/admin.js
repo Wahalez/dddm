@@ -4,12 +4,12 @@ $(document).ready(function () {
       // Sample data for demonstration
       const products = [
         {
-          type: "user 1",
+          userName: "user 1",
           userType: "soplier",
           productType: "product",
         },
         {
-          type: "user 2",
+          userName: "user 2",
           userType: "regular",
           productType: "Sony Playstation",
         },
@@ -25,7 +25,7 @@ $(document).ready(function () {
         const row = $("<tr></tr>");
   
         // Add table cells for each product property
-        row.append(`<td>${product.type}</td>`);
+        row.append(`<td>${product.userName}</td>`);
         row.append(`<td>${product.userType}</td>`);
         row.append(`<td>${product.productType}</td>`);
   
@@ -35,7 +35,7 @@ $(document).ready(function () {
           .addClass("btn btn-primary btn-sm")
           .click(function () {
             // Handle the edit button click event here
-            console.log(`Edit button clicked for ${product.name}`);
+            console.log(`Edit button clicked for ${product.userName}`);
   
             // Create the modal popup
             const modal = $("<div></div>")
@@ -72,7 +72,7 @@ $(document).ready(function () {
             const modalTitle = $("<h5></h5>")
               .addClass("modal-title")
               .attr("id", "editModalLabel")
-              .text(`Edit Product: ${product.name}`)
+              .text(`Edit Product: ${product.userName}`)
               .appendTo(modalHeader);
   
             // Create the modal body
@@ -119,13 +119,10 @@ $(document).ready(function () {
             // Handle the save button click event
             saveButton.click(function () {
               // Get the updated values from the form
-              const updatedProduct = {
-                name: $("#editProductName").val(),
-                description: $("#editDescription").val(),
-                price: parseFloat($("#editPrice").val()),
-                stock: parseInt($("#editStock").val()),
-                category: $("#editCategory").val(),
-                platform: $("#editPlatform").val(),
+              const updatedUusr = {
+                userName: $("#editProductName").val(),
+                userType: $("#editDescription").val(),
+                productType: parseInt($("#editStock").val()),
               };
   
               // Perform any necessary update operations with the updated product data
@@ -148,7 +145,6 @@ $(document).ready(function () {
         $("#productTableBody").append(row);
       }
     }
-  
     // Call the function to populate the product table
     populateProductTable();
   });

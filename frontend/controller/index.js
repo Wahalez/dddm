@@ -51,8 +51,6 @@ function refreshPage() {
 // console.log(searchnameValue);
 
 
-
-
 //dan
 function uploadImage(event) {
   event.preventDefault();
