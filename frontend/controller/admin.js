@@ -4,7 +4,7 @@ $(document).ready(function () {
     // Sample data for demonstration
     const users = [
       {
-        userName: "user 1",
+        userName: "Adin המלך",
         userType: "supplier",
         productType: "product",
       },
