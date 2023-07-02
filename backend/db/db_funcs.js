@@ -50,8 +50,15 @@ async function _addUser(username, password, fname, lname, email, phone, birthday
     }
 }
 
+async function _authenticateUser(username, password) {
+    const query = await User.findOne({username: username, password: password});
+    console.log(query);
+    return query;
+}
+
 module.exports = {
     getAllUsers: _getAllUsers,
     addUser: _addUser,
-    getUserTypes: _getUserTypes
+    getUserTypes: _getUserTypes,
+    authenticateUser: _authenticateUser
 };
