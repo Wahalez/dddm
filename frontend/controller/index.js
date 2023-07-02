@@ -1,7 +1,7 @@
 $(document).ready(() => {
-    // document.getElementById('loginBtn').addEventListener('click', function () {
-    //     window.location.href = '/login';
-    // });
+    document.getElementById('loginBtn').addEventListener('click', function () {
+        window.location.href = '/login';
+    });
     document.getElementById('homeBtn').addEventListener('click', function () {
         window.location.href = '/';
     });
@@ -51,28 +51,23 @@ function refreshPage() {
 // console.log(searchnameValue);
 
 
-
-
-//dan
+// dan
 const handleImageUpload = event => {
     const files = event.target.files
     const formData = new FormData()
     formData.append('myFile', files[0])
-  
+
     fetch('/saveImage', {
-      method: 'POST',
-      body: formData
+        method: 'POST',
+        body: formData
+    }).then(response => response.json()).then(data => {
+        console.log(data.path)
+    }).catch(error => {
+        console.error(error)
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log(data.path)
-    })
-    .catch(error => {
-      console.error(error)
-    })
-  }
-  
-  document.querySelector('#fileUpload').addEventListener('change', event => {
+}
+
+document.querySelector('#fileUpload').addEventListener('change', event => {
     handleImageUpload(event)
-  })
-  //dan^
+})
+// dan^

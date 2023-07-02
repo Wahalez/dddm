@@ -4,22 +4,12 @@ const db_funcs = require('../db/db_funcs');
 
 const router = express.Router();
 
-const views_dir = path.join(__dirname, '../../frontend/view/');
-
 router.use(express.json());
-
-router.get("/", (req, res) => {
-    res.sendFile(views_dir + "index.html");
-});
 
 router.get("/get_users", (req, res) => {
     db_funcs.getAllUsers().then(query => {
         res.send(query);
     });
-});
-
-router.get("/register", (req, res) => {
-    res.sendFile(views_dir + "register.html");
 });
 
 router.post("/create_user", async (req, res) => {
@@ -40,9 +30,17 @@ router.post("/create_user", async (req, res) => {
     } catch (error) {
         res.status(500).send('Error registering user.');
     }
-
 });
 
+router.get('/authenticate', (req, res) => {
+    console.log(req.query);
+    authenticated = db_funcs.authenticateUser(req.query.username, req.query.password);
+    if (authenticated !== null) {
+        session = req.session;
+        session.user = authenticated;
+    }
+    res.send(authenticated !== null);
+});
 
 router.get('/test1', (req, res) => {
     session = req.session;
@@ -55,6 +53,6 @@ router.get('/test2', (req, res) => {
     session = req.session;
     console.log("test2: ", session);
     res.send('muniyaniyo!!!! :D :D :D')
-})
+});
 
 module.exports = router;
