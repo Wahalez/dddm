@@ -1,3 +1,9 @@
+$(document).ready(() => {
+    loadHeader().then(() => {
+        routePages();
+    });
+});
+
 function login(event) {
     event.preventDefault();
     let username = $('#username').val();
