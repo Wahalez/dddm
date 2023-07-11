@@ -1,19 +1,10 @@
 $(document).ready(() => {
-    // document.getElementById('loginBtn').addEventListener('click', function () {
-    //     window.location.href = '/login';
-    // });
-    document.getElementById('homeBtn').addEventListener('click', function () {
-        window.location.href = '/';
+
+    loadHeader().then(() => {
+        routePages();
     });
-    document.getElementById('registerBtn').addEventListener('click', function () {
-        window.location.href = '/register';
-    });
-    // document.getElementById('console').addEventListener('click', function() {
-    // window.location.href = '/consoles';
-    // );
-    // document.getElementById('allGames').addEventListener('click', function() {
-    // window.location.href = '/games';
-    // });
+
+    fetchCities();
 
     $('#phoneNumber').on('input', function () {
         var inputValue = $(this).val();
@@ -21,8 +12,6 @@ $(document).ready(() => {
             $(this).val(inputValue.slice(0, 7));
         }
     });
-
-    fetchCities();
 
     $("#city").autocomplete({
         minLength: 2,

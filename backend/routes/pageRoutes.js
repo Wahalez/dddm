@@ -19,4 +19,8 @@ router.get("/login", (req, res) => {
     res.sendFile(views_dir + "login.html");
 });
 
+router.get("/header", (req, res) => {
+    res.sendFile(views_dir + "header.html");
+});
+
 module.exports = router;
