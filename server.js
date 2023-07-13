@@ -12,9 +12,9 @@ main();
 
 async function main() {
     try {
-        console.log('Connecting to DB...');
+        process.stdout.write('Connecting to DB... ');
+        process.stdout.write('Done\n');
         await mongoose.connect(process.env.DB_CONNECTION);
-        console.log('Successfully connected to db!');
     } catch (err) {
         console.error('Couldn\'t connect to db\n', err);
         return;
@@ -22,15 +22,16 @@ async function main() {
     server();
 }
 function server() {
-    console.log('Initializing app...');
+    process.stdout.write('Initializing app... ');
     const app = express();
+    process.stdout.write('Done\n');
+
     const port = process.env.PORT || 8080;
     const routes_path = path.join(__dirname, '/backend/routes/');
-
     app.use(bodyParser.urlencoded({extended: true}));
 
     // setup session management
-    console.log('Setting up session management...');
+    process.stdout.write('Setting up session management... ');
     const cookie_timeout = 1000 * 60 * 60 * 24;
     app.use(sessions({
         secret: process.env.SESSION_KEY,
@@ -40,6 +41,7 @@ function server() {
         },
         resave: false
     }));
+    process.stdout.write('Done\n');
 
     // setup cookie parser
     app.use(cookieParser());
@@ -48,13 +50,15 @@ function server() {
     app.use(express.static(path.join(__dirname, '/frontend')));
 
     // routes
-    console.log('Setting up routes');
+    process.stdout.write('Setting up routes... ');
     const pageRoutes = require(routes_path + 'pageRoutes');
     const userRoutes = require(routes_path + 'userRoutes');
+    const utilRoutes = require(routes_path + 'utilRoutes');
     app.use('/', pageRoutes);
     app.use('/', userRoutes);
+    app.use('/', utilRoutes);
+    process.stdout.write('Done\n\n');
 
-    console.log('-- Successfulllessness --');
     console.log('App listens on port:', port);
     app.listen(port);
 }

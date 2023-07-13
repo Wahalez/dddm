@@ -1,10 +1,11 @@
 const loadHeader = async () => {
-    if (getHeader() === undefined) {
+    let model = Model.getInstance();
+    if (model.getHeader() === undefined) {
         await $.get('/header').done((res_data) => {
-            header = res_data;
+            model.setHeader(res_data);
         });
     }
-    $('#_header').html(getHeader());
+    $('#_header').html(model.getHeader());
 }
 
 const routePages = () => {

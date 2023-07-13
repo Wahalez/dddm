@@ -16,7 +16,8 @@ $(document).ready(() => {
     $("#city").autocomplete({
         minLength: 2,
         source: function (request, resolve) { // fetch new values with request.term
-            const filteredCities = getCities().filter(function (city) {
+            let model = Model.getInstance();
+            const filteredCities = model.getCities().filter(function (city) {
                 return city.toLowerCase().indexOf(request.term.toLowerCase()) === 0;
             });
             resolve(filteredCities);

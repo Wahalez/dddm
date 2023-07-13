@@ -1,5 +1,5 @@
 $(document).ready(() => {
-    loadHeader().then(() => {
+    initPage().then(() => {
         routePages();
     });
 });
