@@ -23,4 +23,17 @@ router.get('/get_vendors', (req, res) => {
     });
 });
 
+router.post('/upload_image', (req, res) => {
+    const {image} = req.files;
+
+    if (!image) {
+        return res.sendStatus(400);
+    }
+
+    image.mv(__dirname + '/../upload/' + image.name);
+
+    res.sendStatus(200);
+});
+
+
 module.exports = router;

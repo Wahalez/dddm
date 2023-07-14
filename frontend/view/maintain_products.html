@@ -31,10 +31,10 @@
                     <div class="mb-3">
                         <label for="add new product" class="form-label" id="addNewproduct">Add New Product</label>
 
-                        <form>
+                        <form id="form1" onsubmit="create_button_handle(event)" enctype="multipart/form-data">
                             <div class="mb-3">
                                 <label for="ProductName" class="form-label" id="productName">Product Name</label>
-                                <input type="text" class="form-control" id="ProductName" placeholder="Enter the name of the product" required />
+                                <input type="text" name="name" class="form-control" id="ProductName" placeholder="Enter the name of the product" required />
                             </div>
                             <div class="mb-3">
                                 <label for="Description" class="form-label">Description</label>
@@ -44,7 +44,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="Price" class="form-label">Price</label>
-                                        <input type="number" id="Price" name="price" class="form-control" placeholder="Name the price" required />
+                                        <input type="float" id="Price" name="price" class="form-control" placeholder="Name the price" required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">

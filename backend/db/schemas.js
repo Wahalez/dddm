@@ -1,4 +1,4 @@
-const {ObjectId} = require('mongodb');
+const {ObjectId, Decimal128} = require('mongodb');
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
@@ -73,6 +73,7 @@ const products_Schema = new Schema({
     image: String,
     pricing: [
         {
+            _id: false,
             price: Number,
             changed_on: Date,
             changed_by: ObjectId

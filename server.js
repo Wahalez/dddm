@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const sessions = require('express-session');
+const fileUpload = require('express-fileupload');
 
 var session;
 dotenv.config();
@@ -46,6 +47,9 @@ function server() {
     // setup cookie parser
     app.use(cookieParser());
 
+    // setup file uploader
+    app.use(fileUpload());
+
     // serve static files
     app.use(express.static(path.join(__dirname, '/frontend')));
 
@@ -53,9 +57,11 @@ function server() {
     process.stdout.write('Setting up routes... ');
     const pageRoutes = require(routes_path + 'pageRoutes');
     const userRoutes = require(routes_path + 'userRoutes');
+    const productRoutes = require(routes_path + 'productRoutes');
     const utilRoutes = require(routes_path + 'utilRoutes');
     app.use('/', pageRoutes);
     app.use('/', userRoutes);
+    app.use('/', productRoutes);
     app.use('/', utilRoutes);
     process.stdout.write('Done\n\n');
 

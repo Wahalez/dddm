@@ -12,6 +12,33 @@ $(document).ready(function () {
     });
 });
 
+
+function create_button_handle(event) {
+    event.preventDefault();
+    if (check_input()) { // ...
+        console.log($('#form1')[0])
+        let form = new FormData($('#form1')[0]);
+        console.log(form);
+        $.ajax({
+            method: 'POST',
+            url: '/create_product',
+            data: form,
+            processData: false,
+            contentType: false
+        }).done(res => {
+            console.log(res);
+        }).fail(res => {
+            console.log(res);
+        });
+    }
+}
+
+function check_input() {
+    return true;
+}
+
+function upload_image() {}
+
 function populatePlatformsSelection() {
     let model = Model.getInstance();
     $.each(model.getPlatforms(), (index, item) => {
@@ -44,6 +71,15 @@ function populateVendorsSelection() {
         $("#Vendor").append(option);
     });
 }
+
+// ________________________________________________________________________________
+// ________________________________________________________________________________
+// ________________________________________________________________________________
+// ________________________________________________________________________________
+// ________________________________________________________________________________
+// ________________________________________________________________________________
+// ________________________________________________________________________________
+
 
 // Function to populate the product table
 function populateProductTable() { // Sample data for demonstration
