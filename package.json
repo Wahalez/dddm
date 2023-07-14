@@ -14,7 +14,7 @@
   "keywords": [
     "dddm"
   ],
-  "author": "Nagornov, Spector, Adin, Peretz, Another guy",
+  "author": "Nagornov, Spector, Adin, Peretz, Salem",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Wahalez/dddm/issues"
@@ -28,6 +28,7 @@
     "express-fileupload": "^1.4.0",
     "express-session": "^1.17.3",
     "mongodb": "^5.6.0",
-    "mongoose": "^7.2.4"
+    "mongoose": "^7.2.4",
+    "nodemon": "^3.0.1"
   }
 }

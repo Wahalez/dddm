@@ -11,6 +11,9 @@ async function checkAndInitModel() {
     if (!Array.isArray(model.getCategories()) || ! model.getCategories().length) {
         await initCategories();
     }
+    if (!Array.isArray(model.getVendors()) || ! model.getVendors().length) {
+        await initVendors();
+    }
 }
 async function initPlatforms() {
     let model = Model.getInstance();
@@ -22,5 +25,12 @@ async function initCategories() {
     let model = Model.getInstance();
     $.get('/get_categories').done(categories => {
         model.setCategories(categories);
+    });
+}
+
+async function initVendors() {
+    let model = Model.getInstance();
+    $.get('/get_vendors').done(vendors => {
+        model.setVendors(vendors);
     });
 }

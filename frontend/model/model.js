@@ -5,6 +5,7 @@ const Model = (function () {
     let cityArray = [];
     let platforms = [];
     let categories = [];
+    let vendors = [];
 
     function init() { // functions to control the model
         return {
@@ -31,6 +32,12 @@ const Model = (function () {
             },
             setCategories: function (c) {
                 categories = c;
+            },
+            getVendors: function () {
+                return vendors;
+            },
+            setVendors: function (v) {
+                vendors = v;
             }
         }
     }

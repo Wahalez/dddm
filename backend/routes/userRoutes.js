@@ -33,26 +33,13 @@ router.post("/create_user", async (req, res) => {
 });
 
 router.get('/authenticate', (req, res) => {
-    console.log(req.query);
-    authenticated = db_user.authenticateUser(req.query.username, req.query.password);
-    if (authenticated !== null) {
-        session = req.session;
-        session.user = authenticated;
-    }
-    res.send(authenticated !== null);
-});
-
-router.get('/test1', (req, res) => {
-    session = req.session;
-    session.chupapi = 'hello sir :3'; // this actually saves it ! when we call test2 we see this entry, so we can use this to authenticate the user
-    console.log(session);
-    res.send('muniyaniyo :D')
-});
-
-router.get('/test2', (req, res) => {
-    session = req.session;
-    console.log("test2: ", session);
-    res.send('muniyaniyo!!!! :D :D :D')
+    db_user.authenticateUser(req.query.username, req.query.password).then(authenticated => {
+        if (authenticated !== null) {
+            session = req.session;
+            session.user = authenticated;
+        }
+        res.send(authenticated !== null);
+    });
 });
 
 module.exports = router;
