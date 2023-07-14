@@ -23,8 +23,14 @@ const Model = (function () {
             getPlatforms: function () {
                 return platforms;
             },
+            setPlatforms: function (p) {
+                platforms = p;
+            },
             getCategories: function () {
                 return categories;
+            },
+            setCategories: function (c) {
+                categories = c;
             }
         }
     }

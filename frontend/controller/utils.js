@@ -12,15 +12,15 @@ async function checkAndInitModel() {
         await initCategories();
     }
 }
-async function initPlatforms() { // TODO: request platforms and save to model
+async function initPlatforms() {
     let model = Model.getInstance();
     $.get('/get_platforms').done(platforms => {
-        console.log(platforms);
+        model.setPlatforms(platforms);
     });
 }
-async function initCategories() { // TODO: request categories and save to model
+async function initCategories() {
     let model = Model.getInstance();
     $.get('/get_categories').done(categories => {
-        console.log(categories);
+        model.setCategories(categories);
     });
 }
