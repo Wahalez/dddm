@@ -1,17 +1,4 @@
-const mongoose = require('mongoose');
-const {
-    User,
-    Product,
-    Platform,
-    Order,
-    Coupon,
-    Status,
-    UserType,
-    WishList,
-    Vendor,
-    Category
-} = require('./schemas');
-const {ObjectId} = require('mongodb');
+const {User} = require('./schemas');
 
 async function _getAllUsers() {
     const query = await User.find({});

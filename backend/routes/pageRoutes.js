@@ -23,4 +23,8 @@ router.get("/header", (req, res) => {
     res.sendFile(views_dir + "header.html");
 });
 
+router.get("/products_maint", (req, res) => {
+    res.sendFile(views_dir + "maintain_products.html");
+})
+
 module.exports = router;

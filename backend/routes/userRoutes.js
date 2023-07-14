@@ -1,13 +1,13 @@
 const express = require('express');
 const path = require('path');
-const db_funcs = require('../db/db_funcs');
+const db_user = require('../db/db_user');
 
 const router = express.Router();
 
 router.use(express.json());
 
 router.get("/get_users", (req, res) => {
-    db_funcs.getAllUsers().then(query => {
+    db_user.getAllUsers().then(query => {
         res.send(query);
     });
 });
@@ -25,7 +25,7 @@ router.post("/create_user", async (req, res) => {
     } = req.body;
 
     try {
-        const savedUser = await db_funcs.addUser(username, password, fname, lname, email, phone, birthday, address);
+        const savedUser = await db_user.addUser(username, password, fname, lname, email, phone, birthday, address);
         res.status(200).send();
     } catch (error) {
         res.status(500).send('Error registering user.');
@@ -34,7 +34,7 @@ router.post("/create_user", async (req, res) => {
 
 router.get('/authenticate', (req, res) => {
     console.log(req.query);
-    authenticated = db_funcs.authenticateUser(req.query.username, req.query.password);
+    authenticated = db_user.authenticateUser(req.query.username, req.query.password);
     if (authenticated !== null) {
         session = req.session;
         session.user = authenticated;
